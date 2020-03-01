@@ -1,0 +1,22 @@
+fragment CustomerFragment on Customer {
+  id
+  createdAt
+  updatedAt
+
+  email
+  
+  firstName
+  lastName
+  displayName
+  
+  phone
+
+  defaultAddress {
+    ...MailingAddressFragment
+  }
+  
+  lastIncompleteCheckout {
+    ...CheckoutFragment
+  }
+  acceptsMarketing
+}

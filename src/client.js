@@ -5,6 +5,7 @@ import CollectionResource from './collection-resource';
 import ShopResource from './shop-resource';
 import CheckoutResource from './checkout-resource';
 import ImageResource from './image-resource';
+import CustomerResource from './customer-resource';
 import {version} from '../package.json';
 
 // GraphQL
@@ -19,6 +20,7 @@ import types from '../schema.json';
  * @property {ShopResource} shop The property under which shop fetching methods live.
  * @property {CheckoutResource} checkout The property under which shop fetching and mutating methods live.
  * @property {ImageResource} image The property under which image helper methods live.
+ * @property {CustomerResource} customer The property under which customer helper methods live.
  */
 class Client {
 
@@ -81,6 +83,7 @@ class Client {
     this.shop = new ShopResource(this.graphQLClient);
     this.checkout = new CheckoutResource(this.graphQLClient);
     this.image = new ImageResource(this.graphQLClient);
+    this.customer = new CustomerResource(this.graphQLClient);
   }
 
   /**

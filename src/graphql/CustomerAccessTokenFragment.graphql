@@ -1,0 +1,4 @@
+fragment CustomerAccessTokenFragment on CustomerAccessToken {
+  accessToken
+  expiresAt
+}
