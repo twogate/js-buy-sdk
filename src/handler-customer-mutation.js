@@ -11,6 +11,14 @@ export default function handleCustomerMutation(mutationRootKey, client) {
       return rootModel.customerCreate;
     }
 
+    if (rootData && rootData.checkoutCustomerAssociateV2) {
+      return rootModel.checkoutCustomerAssociateV2;
+    }
+
+    if (rootData && rootData.checkoutCustomerDisassociateV2) {
+      return rootModel.checkoutCustomerDisassociateV2;
+    }
+
     if (errors && errors.length) {
       return Promise.reject(new Error(JSON.stringify(errors)));
     }

@@ -6,6 +6,8 @@ import handleCustomerMutation from './handler-customer-mutation';
 import customerQuery from './graphql/customerQuery.graphql';
 import customerCreateMutation from './graphql/customerCreateMutation.graphql';
 import customerAccessTokenCreateMutation from './graphql/customerAccessTokenCreateMutation.graphql';
+import checkoutCustomerAssociateV2Mutation from './graphql/checkoutCustomerAssociateV2Mutation.graphql';
+import checkoutCustomerDisassociateV2Mutation from './graphql/checkoutCustomerDisassociateV2Mutation.graphql';
 
 /**
  * The JS Buy SDK customer resource
@@ -65,6 +67,18 @@ class CustomerResource extends Resource {
     return this.graphQLClient
       .send(customerAccessTokenCreateMutation, { input: { email, password } })
       .then(handleCustomerMutation('customerAccessTokenCreate'))
+  }
+
+  associateCheckout(customerAccessToken, checkoutId) {
+    return this.graphQLClient
+      .send(checkoutCustomerAssociateV2Mutation, { customerAccessToken, checkoutId })
+      .then(handleCustomerMutation('checkoutCustomerAssociateV2'))
+  }
+
+  disassociateCheckout(checkoutId) {
+    return this.graphQLClient
+      .send(checkoutCustomerDisassociateV2Mutation, { checkoutId })
+      .then(handleCustomerMutation('checkoutCustomerDisassociateV2'))
   }
 }
 
